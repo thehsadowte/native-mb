@@ -1,0 +1,53 @@
+{
+  "expo": {
+    "name": "MBtesting",
+    "slug": "MBtesting",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#FFFFFF"
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "The app accesses your photos to let you share them with us in consultation chat, or for you avatar settup."
+        }
+      ],
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow the app to access your camera to let you share the photos and videos with us in consultation chat",
+          "microphonePermission": "Allow the app to access your microphone to let you share the videos with us in consultation chat"
+        }
+      ]
+    ]
+  },
+  "infoPlist": { 
+    "NSCameraUsageDescription": "We needs camera permissions to let you share them with us in consultation chat, or for you avatar settup.", 
+    "NSPhotoLibraryAddUsageDescription": "We needs photo library permissions to let you share them with us in consultation chat, or for you avatar settup.", 
+    "NSPhotoLibraryUsageDescription": "We needs photo library permissions to let you share them with us in consultation chat, or for you avatar settup." 
+  }
+}
