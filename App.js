@@ -1,59 +1,35 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Text, View } from 'react-native';
 import { gStyle } from './Style/style';
 import HomepageStack from './navigate';
-//import TabNavigation from './navigate';
-import * as ImagePicker from 'expo-image-picker';
-import { Camera } from 'expo-camera';
+import { useFonts, Roboto_400Regular } from '@expo-google-fonts/roboto';
+import * as SplashScreen from 'expo-splash-screen';
 
-//import {getItemFromAsyncStorage, storeItemToAsyncStorage} from './components/AsyncStorageMethods'
-// export function
 export default function App() {
-  /// add default constatnts
-  /// user sign in trgger
-  /// поиграйся с констнтой - поменяй ее по очереди на false и true что бы понять как это устроено
   const [userData, setUserData] = useState([]);
-  /// trigger changes in userData
-  //useEffect(() => {
-  /// if changes registered in userData
-  //console.log(userData)
+  let [fontsLoaded] = useFonts({
+    Roboto_400Regular,
+  });
 
-  //}, [userData]);
-  /// STORE USER TO ASYNC STORAGE EXAMPLE
-  /*
-  const userArrayData = 
-    {
-        _id: data._id,
-        email: data.email,
-        name: data.name,
-        emailNotifications: data.emailNotifications,
-        appNotifications: data.appNotifications,
-        secret: data.secret,
-        userAvatar: data.userAvatar,
-    };
-    /// store user to Async Storage                  
-    storeItemToAsyncStorage("user", userArrayData);
-  */
+  const onLayoutRootView = useCallback(async () => {
+    if (fontsLoaded) {
+      await SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded]);
 
-  /// on app load check if user exist in asyncStorage
-  // GET THE USER ARRAY FROM ASYNC STORAGE EXAMPLE
-  /*const getNewData = async () => {
-    const newItem = await getItemFromAsyncStorage('user')
-    /// wait until loaded
-    //console.log(newItem)
-      if(newItem) {
-        // set state
-        setUserData(newItem)
-      }
-    
-  } */
-  /// hit the function
   useEffect(() => {
-    /// call it once by this method
-    //getNewData()
+    SplashScreen.preventAutoHideAsync();
   }, []);
+
+  if (!fontsLoaded) {
+    return null;
+  }
+
   return (
-    <View style={gStyle.main}>
+    <View style={gStyle.main} onLayout={onLayoutRootView}>
+      <Text style={{ fontFamily: 'Roboto_400Regular', fontSize: 28 }}>
+        Here's our font
+      </Text>
       <HomepageStack userData={userData} setUserData={setUserData} />
     </View>
   );
