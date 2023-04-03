@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import { Text, View } from 'react-native';
-import { gStyle } from "./Style/style";
+import { gStyle } from './Style/style';
 import HomepageStack from './navigate';
 //import TabNavigation from './navigate';
+import * as ImagePicker from 'expo-image-picker';
+import { Camera } from 'expo-camera';
 
 //import {getItemFromAsyncStorage, storeItemToAsyncStorage} from './components/AsyncStorageMethods'
 // export function
@@ -13,8 +15,8 @@ export default function App() {
   const [userData, setUserData] = useState([]);
   /// trigger changes in userData
   //useEffect(() => {
-    /// if changes registered in userData
-   //console.log(userData)
+  /// if changes registered in userData
+  //console.log(userData)
 
   //}, [userData]);
   /// STORE USER TO ASYNC STORAGE EXAMPLE
@@ -32,7 +34,6 @@ export default function App() {
     /// store user to Async Storage                  
     storeItemToAsyncStorage("user", userArrayData);
   */
-
 
   /// on app load check if user exist in asyncStorage
   // GET THE USER ARRAY FROM ASYNC STORAGE EXAMPLE
@@ -53,8 +54,7 @@ export default function App() {
   }, []);
   return (
     <View style={gStyle.main}>
-      <HomepageStack userData={userData} setUserData={setUserData}/>
+      <HomepageStack userData={userData} setUserData={setUserData} />
     </View>
   );
 }
-
