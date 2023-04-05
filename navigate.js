@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Image } from 'react-native';
 import Homepage from './components/Homepage';
 import Account from './components/Account';
+import SettingsScreen from './components/SettingsScreen';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -44,6 +45,7 @@ function StackScreen({ userData, setUserData }) {
         }}>
         {() => <Homepage userData={userData} setUserData={setUserData} />}
       </Stack.Screen>
+      <Stack.Screen name="Settings" component={SettingsScreen} />
     </Stack.Navigator>
   );
 }
